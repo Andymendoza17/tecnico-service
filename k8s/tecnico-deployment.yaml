@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tecnico-deployment
+  labels:
+    app: tecnico-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tecnico-service
+  template:
+    metadata:
+      labels:
+        app: tecnico-service
+    spec:
+      containers:
+      - name: tecnico-service
+        image: soportetechacr23637.azurecr.io/tecnico-service:latest
+        ports:
+        - containerPort: 8080
